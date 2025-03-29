@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-app
+  name: argocd
   namespace: argocd
 spec:
   project: sre
   source:
-    repoURL: {{- .Values.repoURL | quote }}
+    repoURL: https://github.com/SleepySouls/App-of-Apps.git
     targetRevision: HEAD
     path: argocd
   destination:
