@@ -1,0 +1,32 @@
+# values.yaml for self-managed ArgoCD version 7.8.14
+global:
+  image:
+    tag: "v7.8.14"
+
+server:
+  resources:
+    limits:
+      memory: "512Mi"
+    requests:
+      memory: "512Mi"
+
+repoServer:
+  resources:
+    limits:
+      memory: "512Mi"
+    requests:
+      memory: "512Mi"
+
+# Disable ingress
+ingress:
+  enabled: false
+
+# AppProjects configuration
+applicationset:
+  enabled: true
+
+configs:
+  repositories:
+    - url: https://github.com/SleepySouls/App-of-Apps.git
+      type: git
+      name: argocd-app-of-apps
