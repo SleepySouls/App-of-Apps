@@ -4,11 +4,11 @@ metadata:
   name: argocd
   namespace: argocd
 spec:
-  project: sre
+  project: tools
   source:
-    repoURL: https://github.com/SleepySouls/App-of-Apps.git
+    repoURL: {{ .Values.argocd.repoURL | quote }}
     targetRevision: HEAD
-    path: argocd
+    path: values/argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -16,5 +16,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

@@ -23,10 +23,11 @@ ingress:
 
 # AppProjects configuration
 applicationset:
-  enabled: true
+  enabled: false
 
 configs:
   repositories:
     - url: https://github.com/SleepySouls/App-of-Apps.git
       type: git
       name: argocd-app-of-apps
+      username: SleepySouls
