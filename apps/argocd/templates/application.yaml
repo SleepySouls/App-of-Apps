@@ -4,7 +4,7 @@ metadata:
   name: argocd
   namespace: argocd
 spec:
-  project: tools
+  project: project
   source:
     repoURL: {{ .Values.argocd.repoURL | quote }}
     targetRevision: HEAD

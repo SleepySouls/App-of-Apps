@@ -1,1 +1,2 @@
-repoURL: https://github.com/SleepySouls/App-of-Apps.git
+argocd:
+  repoURL: https://github.com/SleepySouls/App-of-Apps.git
