@@ -2,25 +2,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationProject
 metadata:
-  name: {{ .Values.appProjects.projects[0].name }}
+  name: {{ .Values.appProjects.projects.name }}
   namespace: argocd
 spec:
   sourceRepos:
-    {{- range .Values.appProjects.projects[0].sourceRepos }}
+    {{- range .Values.appProjects.projects.sourceRepos }}
     - {{ . | quote }}
     {{- end }}
   destinations:
-    {{- range .Values.appProjects.projects[0].destinations }}
+    {{- range .Values.appProjects.projects.destinations }}
     - namespace: {{ .namespace | quote }}
       server: {{ .server | quote }}
     {{- end }}
   clusterResourceWhitelist:
-    {{- range .Values.appProjects.projects[0].clusterResourceWhitelist }}
+    {{- range .Values.appProjects.projects.clusterResourceWhitelist }}
     - group: {{ .group | quote }}
       kind: {{ .kind | quote }}
     {{- end }}
   namespaceResourceWhitelist:
-    {{- range .Values.appProjects.projects[0].namespaceResourceWhitelist }}
+    {{- range .Values.appProjects.projects.namespaceResourceWhitelist }}
     - group: {{ .group | quote }}
       kind: {{ .kind | quote }}
     {{- end }}
+{{ end }}
