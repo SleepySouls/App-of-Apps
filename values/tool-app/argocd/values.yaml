@@ -47,6 +47,8 @@ argocd:
   configs:
     cm:
       create: true
+      exec.enabled: true
+      admin.enabled: true
       application.instanceLabelKey: argocd.argoproj.io/instance
       repositories:
         app-of-apps:
@@ -54,5 +56,4 @@ argocd:
           type: git
           name: argocd-app-of-apps
           username: SleepySouls
-      exec.enabled: true
-      admin.enabled: true
+

@@ -1,0 +1,11 @@
+spec:
+  project: project
+  repoURL: https://github.com/SleepySouls/App-of-Apps.git
+  cluster: https://kubernetes.default.svc
+  path: values/tool-app
+  namespace: argocd
+  target: main
+
+applications:
+  argocd:
+    createNamespace: true
