@@ -1,5 +1,5 @@
 # values.yaml for self-managed ArgoCD version 7.8.14
-AppProjects:
+appProjects:
   enabled: true
   projects:
     - name: project
@@ -15,6 +15,7 @@ AppProjects:
         - group: '*'
           kind: '*'
 argocd:
+  fullnameOverride: argocd
   server:
     resources:
       limits:
@@ -39,18 +40,19 @@ argocd:
       - secretName: argocd-tls
         hosts:
           - argocd.example.com
-  
-  exec: 
-    enabled: true
 
   applicationset:
     enabled: false
 
   configs:
     cm:
+      create: true
+      application.instanceLabelKey: argocd.argoproj.io/instance
       repositories:
-        - url: https://github.com/SleepySouls/App-of-Apps.git
+        app-of-apps:
+          url: https://github.com/SleepySouls/App-of-Apps.git
           type: git
           name: argocd-app-of-apps
           username: SleepySouls
-
+      exec.enabled: true
+      admin.enabled: true
