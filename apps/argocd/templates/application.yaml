@@ -6,11 +6,11 @@ metadata:
 spec:
   project: project
   source:
-    repoURL: {{ .Values.argocd.repoURL | quote }}
+    repoURL: {{ .Values.repoURL | quote }}
     targetRevision: HEAD
     path: values/argocd
   destination:
-    server: https://kubernetes.default.svc
+    server: {{ .Values.cluster | quote }}
     namespace: argocd
   syncPolicy:
     automated:
