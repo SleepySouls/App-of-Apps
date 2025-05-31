@@ -1,0 +1,29 @@
+controller:
+  service:
+    type: NodePort
+  ingressClassResource:
+    name: nginx
+    enabled: true
+    default: true
+  admissionWebhooks:
+    enabled: false
+  resources:
+    requests:
+      cpu: 100m
+      memory: 90Mi
+    limits:
+      cpu: 200m
+      memory: 180Mi
+  nodeSelector:
+    ingress-ready: "true"
+  tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Equal
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Equal
+  publishService:
+    enabled: false
+  extraArgs:
+    publish-status-address: localhost
