@@ -7,7 +7,7 @@ appProjects:
         - '*'
       destinations:
         - namespace: '*'
-          server: '*'
+          server: 'https://kubernetes.default.svc'
       clusterResourceWhitelist:
         - group: '*'
           kind: '*'
@@ -19,7 +19,7 @@ appProjects:
         - '*'
       destinations:
         - namespace: '*'
-          server: '*'
+          server: 'https://kubernetes.default.svc'
       clusterResourceWhitelist:
         - group: '*'
           kind: '*'

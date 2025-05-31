@@ -9,3 +9,5 @@ spec:
 applications:
   argocd:
     createNamespace: true
+  ingress:
+    createNamespace: true
