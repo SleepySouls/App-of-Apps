@@ -1,37 +1,57 @@
 # values.yaml for self-managed ArgoCD version 7.8.14
-global:
-  image:
-    tag: "v2.6.15"
-
-server:
-  resources:
-    limits:
-      memory: "512Mi"
-    requests:
-      memory: "512Mi"
-
-repoServer:
-  resources:
-    limits:
-      memory: "512Mi"
-    requests:
-      memory: "512Mi"
-
-# Disable ingress
-ingress:
-  enabled: false
-
-exec: 
+AppProjects:
   enabled: true
+  projects:
+    - name: project
+      description: "Project for ArgoCD applications"
+      sourceRepos:
+        - '*'
+      destinations:
+        - namespace: argocd
+          server: https://kubernetes.default.svc
+      clusterResourceWhitelist:
+        - group: '*'
+          kind: '*'
+      namespaceResourceBlacklist:
+        - group: '*'
+          kind: '*'
+argocd:
+  server:
+    resources:
+      limits:
+        memory: "512Mi"
+      requests:
+        memory: "512Mi"
 
-# AppProjects configuration
-applicationset:
-  enabled: false
+  repoServer:
+    resources:
+      limits:
+        memory: "512Mi"
+      requests:
+        memory: "512Mi"
 
-configs:
-  repositories:
-    - url: https://github.com/SleepySouls/App-of-Apps.git
-      type: git
-      name: argocd-app-of-apps
-      username: SleepySouls
+  ingress:
+    enabled: false
+    hosts:
+      - host: argocd.example.com
+        paths:
+          - /
+    tls:
+      - secretName: argocd-tls
+        hosts:
+          - argocd.example.com
+  
+  exec: 
+    enabled: true
+
+  applicationset:
+    enabled: false
+
+  configs:
+    cm:
+      repositories:
+        - url: https://github.com/SleepySouls/App-of-Apps.git
+          type: git
+          name: argocd-app-of-apps
+          username: SleepySouls
 

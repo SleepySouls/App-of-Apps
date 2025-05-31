@@ -7,12 +7,11 @@ spec:
   project: project
   source:
     repoURL: {{ .Values.repoURL | quote }}
-    targetRevision: HEAD
+    targetRevision: main
     path: values/argocd
   destination:
     server: {{ .Values.cluster | quote }}
     namespace: argocd
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
