@@ -13,6 +13,18 @@ appProjects:
       namespaceResourceWhitelist:
         - group: '*'
           kind: '*'
+    - name: product
+      sourceRepos:
+        - '*'
+      destinations:
+        - namespace: '*'
+          server: '*'
+      clusterResourceWhitelist:
+        - group: '*'
+          kind: '*'
+      namespaceResourceWhitelist:
+        - group: '*'
+          kind: '*'
 
 argocd:
   fullnameOverride: argocd
