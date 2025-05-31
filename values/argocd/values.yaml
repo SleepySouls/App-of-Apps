@@ -21,6 +21,9 @@ repoServer:
 ingress:
   enabled: false
 
+exec: 
+  enabled: true
+
 # AppProjects configuration
 applicationset:
   enabled: false
@@ -31,3 +34,4 @@ configs:
       type: git
       name: argocd-app-of-apps
       username: SleepySouls
+
