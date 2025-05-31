@@ -1,10 +1,12 @@
-{{- if .Values.appProjects.enabled }}
+{{- if and .Values.appProjects.enabled (lookup "argoproj.io/v1alpha1" "ApplicationProject" "" "") }}
 {{- range .Values.appProjects.projects }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationProject
 metadata:
   name: {{ .name }}
   namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: argocd
 spec:
   sourceRepos:
 {{- range .sourceRepos }}
