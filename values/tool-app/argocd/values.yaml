@@ -1,4 +1,3 @@
-# values.yaml for self-managed ArgoCD version 7.8.14
 appProjects:
   enabled: true
   projects:
@@ -7,7 +6,7 @@ appProjects:
         - '*'
       destinations:
         - namespace: '*'
-          server: 'https://kubernetes.default.svc'
+          server: '*'
       clusterResourceWhitelist:
         - group: '*'
           kind: '*'
