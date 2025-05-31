@@ -7,14 +7,10 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-    meta.helm.sh/release-name: {{ $.Release.Name }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  labels:
-    app.kubernetes.io/part-of: argocd
-    app.kubernetes.io/instance: {{ $.Release.Name }}
-    app.kubernetes.io/managed-by: Helm
 spec:
+  description: "Project {{ .name }}"
   sourceRepos:
 {{- range .sourceRepos }}
     - {{ . | quote }}

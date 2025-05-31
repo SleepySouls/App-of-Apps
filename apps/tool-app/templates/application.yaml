@@ -1,19 +1,27 @@
+{{- $spec := .Values.spec -}}
 {{- range $name, $app := .Values.applications }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $name }}
-  namespace: {{ $.Values.spec.namespace }}
+  namespace: {{ $spec.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/instance: {{ $name }}
 spec:
-  project: {{ $.Values.spec.project }}
+  project: {{ $spec.project }}
   source:
-    repoURL: {{ $.Values.spec.repoURL }}
-    targetRevision: {{ $.Values.spec.target }}
-    path: {{ $.Values.spec.path }}/{{ $name }}
+    repoURL: {{ $spec.repoURL }}
+    targetRevision: {{ $spec.target }}
+    path: {{ $spec.path }}/{{ $name }}
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
-    server: {{ $.Values.spec.cluster }}
+    server: {{ $spec.cluster }}
     namespace: {{ $name }}
   syncPolicy:
     syncOptions:
