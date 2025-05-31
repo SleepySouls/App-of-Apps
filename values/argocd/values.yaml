@@ -3,12 +3,11 @@ AppProjects:
   enabled: true
   projects:
     - name: project
-      description: "Project for ArgoCD applications"
       sourceRepos:
         - '*'
       destinations:
-        - namespace: argocd
-          server: https://kubernetes.default.svc
+        - namespace: '*'
+          server: '*'
       clusterResourceWhitelist:
         - group: '*'
           kind: '*'
