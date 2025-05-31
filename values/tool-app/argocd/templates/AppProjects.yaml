@@ -1,7 +1,7 @@
 {{- if .Values.appProjects.enabled }}
 {{- range .Values.appProjects.projects }}
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationProject
+kind: AppProject
 metadata:
   name: {{ .name }}
   namespace: argocd
