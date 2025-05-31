@@ -26,7 +26,7 @@ appProjects:
         - group: '*'
           kind: '*'
 
-argocd:
+argo-cd:
   fullnameOverride: argocd
   server:
     resources:
