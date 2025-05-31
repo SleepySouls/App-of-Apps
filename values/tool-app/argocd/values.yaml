@@ -44,14 +44,14 @@ argo-cd:
 
   ingress:
     enabled: true
+    ingressClassName: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    pathType: Prefix
     hosts:
       - host: argocd.example.com
         paths:
           - /
-    tls:
-      - secretName: argocd-tls
-        hosts:
-          - argocd.example.com
 
   applicationset:
     enabled: false
