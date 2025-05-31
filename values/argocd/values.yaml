@@ -11,7 +11,7 @@ AppProjects:
       clusterResourceWhitelist:
         - group: '*'
           kind: '*'
-      namespaceResourceBlacklist:
+      namespaceResourceWhitelist:
         - group: '*'
           kind: '*'
 argocd:
