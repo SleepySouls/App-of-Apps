@@ -1,35 +1,27 @@
-{{- if .Values.appProjects.enabled }}
-{{- range .Values.appProjects.projects }}
+{{ if not .Values.appProjects.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationProject
 metadata:
-  name: {{ .name }}
+  name: {{ .Values.appProjects.projects.name }}
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  description: "Project {{ .name }}"
   sourceRepos:
-{{- range .sourceRepos }}
+    {{- range .Values.appProjects.projects.sourceRepos }}
     - {{ . | quote }}
-{{- end }}
+    {{- end }}
   destinations:
-{{- range .destinations }}
+    {{- range .Values.appProjects.projects.destinations }}
     - namespace: {{ .namespace | quote }}
       server: {{ .server | quote }}
-{{- end }}
+    {{- end }}
   clusterResourceWhitelist:
-{{- range .clusterResourceWhitelist }}
+    {{- range .Values.appProjects.projects.clusterResourceWhitelist }}
     - group: {{ .group | quote }}
       kind: {{ .kind | quote }}
-{{- end }}
+    {{- end }}
   namespaceResourceWhitelist:
-{{- range .namespaceResourceWhitelist }}
+    {{- range .Values.appProjects.projects.namespaceResourceWhitelist }}
     - group: {{ .group | quote }}
       kind: {{ .kind | quote }}
-{{- end }}
----
-{{- end }}
-{{- end }}
+    {{- end }}
+{{ end }}
