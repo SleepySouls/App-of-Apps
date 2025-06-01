@@ -68,4 +68,5 @@ argo-cd:
           type: git
           name: argocd-app-of-apps
           username: SleepySouls
+          project: project
 
