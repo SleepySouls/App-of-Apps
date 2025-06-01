@@ -1,6 +1,6 @@
 controller:
   service:
-    type: NodePort
+    type: LoadBalancer
   ingressClassResource:
     name: nginx
     enabled: true
@@ -16,14 +16,13 @@ controller:
       memory: 180Mi
   nodeSelector:
     ingress-ready: "true"
+    kubernetes.io/os: linux
   tolerations:
     - effect: NoSchedule
-      key: node-role.kubernetes.io/control-plane
-      operator: Equal
-    - effect: NoSchedule
-      key: node-role.kubernetes.io/master
-      operator: Equal
+      operator: Exists
   publishService:
-    enabled: false
+    enabled: true
+  hostPort:
+    enabled: true
   extraArgs:
     publish-status-address: localhost
