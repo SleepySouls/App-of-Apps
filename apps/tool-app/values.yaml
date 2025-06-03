@@ -11,3 +11,6 @@ applications:
     createNamespace: true
   ingress-nginx:
     createNamespace: true
+  metallb:
+    createNamespace: true
+    namespace: metallb-system
