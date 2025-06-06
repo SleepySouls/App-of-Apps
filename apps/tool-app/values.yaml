@@ -14,3 +14,5 @@ applications:
   metallb:
     createNamespace: true
     namespace: metallb-system
+  harbor:
+    createNamespace: true
