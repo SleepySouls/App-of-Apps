@@ -2,7 +2,7 @@ harbor:
   expose:
     type: nodePort
     tls:
-      enabled: true
+      enabled: false
       certSource: auto
     nodePort:
       name: harbor
