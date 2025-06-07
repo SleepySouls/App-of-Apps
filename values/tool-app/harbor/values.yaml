@@ -1,4 +1,5 @@
 harbor:
+
   expose:
     type: nodePort # Set expose type to nodePort
     tls:
@@ -11,13 +12,11 @@ harbor:
           port: 30080 # HTTP NodePort
         https:
           port: 30443 # HTTPS NodePort (will be created but not used for externalURL)
-        notary:
-          port: 30093 # Notary NodePort (if enabled)
-      externalIPs:
-        - 127.0.0.1 # Access from your host machine
+        # notary:
+        #   port: 30093 # Notary NodePort (if enabled)
 
   # External URL should reflect the NodePort and the external IP/hostname
-  externalURL: http://127.0.0.1:30080 # IMPORTANT: Ensure this is HTTP and matches your NodePort
+  externalURL: http://localhost:30080 # IMPORTANT: Ensure this is HTTP and matches your NodePort
 
   harborAdminPassword: Harbor12345 # Change this to a strong password!
 
