@@ -6,7 +6,7 @@ controller:
     enabled: true
     default: true
   admissionWebhooks:
-    enabled: false
+    enabled: true
   resources:
     requests:
       cpu: 100m
