@@ -18,5 +18,12 @@ applications:
     createNamespace: true
   cert-manager:
     createNamespace: true
+  kube-prometheus-stack:
+    createNamespace: true
+    namespace: monitoring
+    dependsOn:
+      - cert-manager
   argo-rollouts:
     createNamespace: true
+    dependsOn:
+      - kube-prometheus-stack

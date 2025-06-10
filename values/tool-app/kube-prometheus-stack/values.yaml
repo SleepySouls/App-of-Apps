@@ -1,0 +1,12 @@
+kube-prometheus-stack:
+  prometheusOperator:
+    enabled: true
+  prometheus:
+    enabled: true
+    prometheusSpec:
+      retention: 30d
+  grafana:
+    enabled: true
+    adminPassword: prom-operator
+  alertmanager:
+    enabled: true
