@@ -16,3 +16,5 @@ applications:
     namespace: metallb-system
   harbor:
     createNamespace: true
+  cert-manager:
+    createNamespace: true
