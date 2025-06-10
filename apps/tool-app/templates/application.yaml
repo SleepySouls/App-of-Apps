@@ -16,9 +16,29 @@ spec:
     server: {{ $.Values.spec.cluster }}
     namespace: {{ default $name $app.namespace }}
   syncPolicy:
+    {{- if $app.syncPolicy }}
+    {{- with $app.syncPolicy }}
+    syncOptions:
+      {{- if .syncOptions }}
+      {{- range .syncOptions }}
+      - {{ . }}
+      {{- end }}
+      {{- end }}
+    {{- if .syncWave }}
+    syncWave: {{ .syncWave }}
+    {{- end }}
+    {{- end }}
+    {{- else }}
     syncOptions:
       {{- if $app.createNamespace }}
       - CreateNamespace=true
       {{- end }}
+    {{- end }}
+  {{- if $app.dependsOn }}
+  dependsOn:
+    {{- range $app.dependsOn }}
+    - {{ . }}
+    {{- end }}
+  {{- end }}
 ---
 {{- end }}

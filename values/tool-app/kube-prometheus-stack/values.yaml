@@ -1,6 +1,10 @@
 kube-prometheus-stack:
+  crds:
+    enabled: true
+    createAPIService: true
   prometheusOperator:
     enabled: true
+    createCustomResource: true
   prometheus:
     enabled: true
     prometheusSpec:
