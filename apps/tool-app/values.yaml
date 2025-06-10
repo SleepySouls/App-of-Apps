@@ -18,3 +18,5 @@ applications:
     createNamespace: true
   cert-manager:
     createNamespace: true
+  argo-rollouts:
+    createNamespace: true
