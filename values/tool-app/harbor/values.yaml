@@ -1,22 +1,22 @@
 harbor:
-
   expose:
-    type: nodePort # Set expose type to nodePort
+    type: ingress
     tls:
-      enabled: false # Explicitly disable TLS for NodePort exposure
-      # certSource: auto # Not relevant if TLS is disabled
-    nodePort:
-      name: harbor
-      ports:
-        http:
-          port: 30080 # HTTP NodePort
-        https:
-          port: 30443 # HTTPS NodePort (will be created but not used for externalURL)
-        # notary:
-        #   port: 30093 # Notary NodePort (if enabled)
-
-  # External URL should reflect the NodePort and the external IP/hostname
-  externalURL: http://localhost:30080 # IMPORTANT: Ensure this is HTTP and matches your NodePort
+      enabled: false # Explicitly disable TLS for internal Harbor components
+    ingress:
+      enabled: true
+      hosts:
+        core: harbor.example.com # Your desired hostname for Harbor
+      className: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        nginx.ingress.kubernetes.io/ssl-redirect: "false" # No SSL redirect for HTTP
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP" # Important for Nginx to talk HTTP to Harbor
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+      tls:
+        enabled: false # Explicitly disable TLS for the Ingress resource
+  externalURL: http://harbor.example.com # Use HTTP URL for internal components
 
   harborAdminPassword: Harbor12345 # Change this to a strong password!
 
