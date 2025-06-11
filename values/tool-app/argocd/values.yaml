@@ -58,7 +58,7 @@ argo-cd:
         nginx.ingress.kubernetes.io/force-ssl-redirect: "false" # Disable SSL redirect
         nginx.ingress.kubernetes.io/ssl-redirect: "false"      # Explicitly disable SSL redirect
         nginx.ingress.kubernetes.io/backend-protocol: "HTTP" 
-      hostname: argocd.example.com
+      hostname: argocd.khangvu.dev
       path: /
       pathType: Prefix
       https: false

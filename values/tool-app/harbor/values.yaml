@@ -6,7 +6,7 @@ harbor:
     ingress:
       enabled: true
       hosts:
-        core: harbor.example.com # Your desired hostname for Harbor
+        core: harbor.khangvu.dev # Your desired hostname for Harbor
       className: nginx
       annotations:
         nginx.ingress.kubernetes.io/proxy-body-size: "0"
@@ -16,7 +16,7 @@ harbor:
         nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
       tls:
         enabled: false # Explicitly disable TLS for the Ingress resource
-  externalURL: http://harbor.example.com # Use HTTP URL for internal components
+  externalURL: http://harbor.khangvu.dev # Use HTTP URL for internal components
 
   harborAdminPassword: Harbor12345 # Change this to a strong password!
 
