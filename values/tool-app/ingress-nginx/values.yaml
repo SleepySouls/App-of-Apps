@@ -7,11 +7,13 @@ controller:
     default: true
   admissionWebhooks:
     enabled: true
+    patch:
+      enabled: true
   resources:
     requests:
       cpu: 100m
       memory: 90Mi
-  nodeSelector:
+  nodeSelector: 
     ingress-ready: "true"
     kubernetes.io/os: linux
   tolerations:
@@ -23,3 +25,5 @@ controller:
     enabled: true
   extraArgs:
     publish-status-address: localhost
+
+# namespaceOverride: ingress-nginx
