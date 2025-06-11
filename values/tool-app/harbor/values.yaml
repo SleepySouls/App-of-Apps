@@ -1,6 +1,23 @@
-harbor:
-  expose:
+h  expose:
     type: ingress
+    tls:
+      enabled: false # Explicitly disable TLS for internal Harbor components
+    ingress:
+      enabled: true
+      hosts:
+        core: harbor.khangvu.dev
+      className: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      tls:
+        enabled: true
+        secretName: harbor-tls
+  externalURL: https://harbor.khangvu.dev   type: ingress
     tls:
       enabled: false # Explicitly disable TLS for internal Harbor components
     ingress:
