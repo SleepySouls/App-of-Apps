@@ -26,4 +26,4 @@ controller:
   extraArgs:
     publish-status-address: localhost
 
-# namespaceOverride: ingress-nginx
+namespaceOverride: ingress-nginx
