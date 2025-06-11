@@ -54,6 +54,8 @@ ingress-nginx:
 
     admissionWebhooks:
       enabled: true
+      patch:
+        enabled: true
 
   defaultBackend:
     enabled: true
