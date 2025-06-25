@@ -37,8 +37,7 @@ ingress-nginx:
         operator: "Exists"
         effect: "NoSchedule"
 
-    extraArgs:
-      publish-status-address: localhost
+    extraArgs: {}
 
     serviceAccount:
       create: true
