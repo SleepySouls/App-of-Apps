@@ -1,40 +1,10 @@
-# controller:
-#   service:
-#     type: LoadBalancer
-#   ingressClassResource:
-#     name: nginx
-#     enabled: true
-#     default: true
-#   admissionWebhooks:
-#     enabled: true
-#     patch:
-#       enabled: true
-#   resources:
-#     requests:
-#       cpu: 100m
-#       memory: 90Mi
-#   nodeSelector: 
-#     ingress-ready: "true"
-#     kubernetes.io/os: linux
-#   tolerations:
-#     - effect: NoSchedule
-#       operator: Exists
-#   publishService:
-#     enabled: true
-#   hostPort:
-#     enabled: true
-#   extraArgs:
-#     publish-status-address: localhost
-
-# namespaceOverride: ingress-nginx
-
 ingress-nginx:
   controller:
     image:
       registry: registry.k8s.io
       image: ingress-nginx/controller
-      tag: v1.12.1
-      digest: sha256:9724476b928967173d501040631b23ba07f47073999e80e34b120e8db5f234d5
+      tag: v1.12.3
+      digest: sha256:ac444cd9515af325ba577b596fe4f27a34be1aa330538e8b317ad9d6c8fb94ee
 
     replicaCount: 1
 
@@ -46,7 +16,7 @@ ingress-nginx:
     ingressClass: nginx
 
     service:
-      type: LoadBalancer
+      type: NodePort
 
     metrics:
       enabled: true
@@ -60,11 +30,19 @@ ingress-nginx:
       enabled: true
 
     tolerations:
-      - effect: NoSchedule
-        operator: Exists
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
 
     extraArgs:
       publish-status-address: localhost
+
+    serviceAccount:
+      create: true
+      name: ingress-nginx
 
   defaultBackend:
     enabled: true
@@ -72,6 +50,10 @@ ingress-nginx:
   rbac:
     create: true
 
-  serviceAccount:
+  admissionWebhooks:
     create: true
-    name: ingress-nginx
+    patch:
+      enabled: true
+    serviceAccount:
+      create: true
+      name: ingress-nginx-admission
