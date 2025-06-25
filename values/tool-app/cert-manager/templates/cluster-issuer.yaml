@@ -7,7 +7,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: khangvx8803@gmail.com  # You should change this to your email
+    email: khangvx8803@gmail.com
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
