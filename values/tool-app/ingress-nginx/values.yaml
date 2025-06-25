@@ -47,7 +47,6 @@ ingress-nginx:
 
     service:
       type: LoadBalancer
-      # NodePorts not specified in the manifest
 
     metrics:
       enabled: true
@@ -56,6 +55,16 @@ ingress-nginx:
       enabled: true
       patch:
         enabled: true
+
+    hostPort:
+      enabled: true
+
+    tolerations:
+      - effect: NoSchedule
+        operator: Exists
+
+    extraArgs:
+      publish-status-address: localhost
 
   defaultBackend:
     enabled: true
