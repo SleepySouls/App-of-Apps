@@ -6,7 +6,8 @@ n8n:
     enabled: true
     hosts:
       - host: n8n.example.com
-        paths: []
+        paths:
+          - /
 
   redis:
     enabled: true
