@@ -5,5 +5,5 @@ type: application
 version: 0.1.0
 dependencies:
   - name: memgraph
-    version: 1.8.10
-    repository: https://memgraph.github.io/helm-charts
+    version: 0.1.8
+    repository: https://memgraph.github.io/helm-charts/
