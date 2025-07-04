@@ -31,16 +31,10 @@ applications:
   memgraph:
     createNamespace: true
     namespace: memgraph
-  # kube-prometheus-stack:
-  #   createNamespace: true
-  #   namespace: monitoring
-  #   dependsOn:
-  #     - cert-manager
-  #   syncPolicy:
-  #     syncOptions:
-  #       - CreateNamespace=true
-  #       - ServerSideApply=true
-  #     syncWave: 1
+  kube-prometheus-stack:
+    createNamespace: true
+    namespace: monitoring
+
   # argo-rollouts:
   #   createNamespace: true
   #   dependsOn:
