@@ -15,7 +15,7 @@ ingress-nginx:
     ingressClass: nginx
 
     service:
-      type: NodePort
+      type: LoadBalancer
 
     watchIngressWithoutClass: true
     allowSnippetAnnotations: true
@@ -42,8 +42,8 @@ ingress-nginx:
 
     publicService:
       enabled: false
-    extraArgs:
-      publish-status-address: localhost
+    # extraArgs:
+    #   publish-status-address: localhost
 
   # defaultBackend:
   #   enabled: true
