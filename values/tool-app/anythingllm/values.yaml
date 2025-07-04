@@ -14,3 +14,11 @@ anything-llm:
     volumes:
       - name: anythingllm-pvc
         mountPath: /app/server/storage
+
+  chromadb:
+    enabled: true
+    chromadb:
+      auth:
+        enabled: false
+    service:
+      type: ClusterIP
