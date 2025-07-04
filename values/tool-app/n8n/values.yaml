@@ -1,0 +1,16 @@
+n8n:
+  n8n:
+    encryption_key: test
+
+  ingress:
+    enabled: true
+    hosts:
+      - host: n8n.example.com
+        # paths:
+        #   - path: /
+        #     pathType: ImplementationSpecific
+
+  redis:
+    enabled: true
+  persistence:
+    enabled: true

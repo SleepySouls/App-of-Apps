@@ -25,6 +25,9 @@ applications:
   librechat:
     createNamespace: true
     namespace: librechat
+  n8n:
+    createNamespace: true
+    namespace: n8n
   # kube-prometheus-stack:
   #   createNamespace: true
   #   namespace: monitoring
