@@ -34,12 +34,6 @@ applications:
   kube-prometheus-stack:
     createNamespace: true
     namespace: monitoring
-
-  # argo-rollouts:
-  #   createNamespace: true
-  #   dependsOn:
-  #     - kube-prometheus-stack
-  #   syncPolicy:
-  #     syncOptions:
-  #       - CreateNamespace=true
-  #     syncWave: 2
+  argo-rollouts:
+    createNamespace: true
+    namespace: argo-rollouts
