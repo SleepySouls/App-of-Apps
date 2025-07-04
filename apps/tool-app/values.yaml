@@ -22,6 +22,9 @@ applications:
   anythingllm:
     createNamespace: true
     namespace: anythingllm
+  librechat:
+    createNamespace: true
+    namespace: librechat
   # kube-prometheus-stack:
   #   createNamespace: true
   #   namespace: monitoring

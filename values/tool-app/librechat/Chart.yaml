@@ -1,0 +1,9 @@
+apiVersion: v2
+name: librechat
+description: LibreChat Application Helm Chart
+type: application
+version: 0.1.0
+dependencies:
+  - name: librechat
+    version: 1.8.10
+    repository: https://charts.blue-atlas.de
