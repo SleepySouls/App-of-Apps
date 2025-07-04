@@ -42,19 +42,3 @@ ingress-nginx:
 
     publicService:
       enabled: false
-    # extraArgs:
-    #   publish-status-address: localhost
-
-  # defaultBackend:
-  #   enabled: true
-
-  # rbac:
-  #   create: true
-
-  # admissionWebhooks:
-  #   create: true
-  #   patch:
-  #     enabled: true
-  #   serviceAccount:
-  #     create: true
-  #     name: ingress-nginx-admission

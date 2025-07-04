@@ -1,2 +1,4 @@
 github_token.txt
 kind-cluster.yaml
+charts/
+Chart.lock

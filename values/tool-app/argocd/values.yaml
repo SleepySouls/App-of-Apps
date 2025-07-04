@@ -55,7 +55,7 @@ argo-cd:
       ingressClassName: nginx
       annotations:
         kubernetes.io/ingress.class: nginx
-      hostname: argocd.khangvu.dev
+      hostname: argocd.example.com
       path: /
       pathType: Prefix
           
