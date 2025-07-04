@@ -1,12 +1,11 @@
 ingress-nginx:
   controller:
-    image:
-      registry: registry.k8s.io
-      image: ingress-nginx/controller
-      tag: v1.12.3
-      digest: sha256:ac444cd9515af325ba577b596fe4f27a34be1aa330538e8b317ad9d6c8fb94ee
-
     replicaCount: 1
+
+    updateStrategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 1
 
     ingressClassResource:
       name: nginx
@@ -16,10 +15,10 @@ ingress-nginx:
     ingressClass: nginx
 
     service:
-      type: NodePort
+      type: LoadBalancer
 
-    metrics:
-      enabled: true
+    watchIngressWithoutClass: true
+    allowSnippetAnnotations: true
 
     admissionWebhooks:
       enabled: true
@@ -37,22 +36,25 @@ ingress-nginx:
         operator: "Exists"
         effect: "NoSchedule"
 
-    extraArgs: {}
-
     serviceAccount:
       create: true
       name: ingress-nginx
 
-  defaultBackend:
-    enabled: true
+    publicService:
+      enabled: false
+    extraArgs:
+      public-status-address: localhost
 
-  rbac:
-    create: true
+  # defaultBackend:
+  #   enabled: true
 
-  admissionWebhooks:
-    create: true
-    patch:
-      enabled: true
-    serviceAccount:
-      create: true
-      name: ingress-nginx-admission
+  # rbac:
+  #   create: true
+
+  # admissionWebhooks:
+  #   create: true
+  #   patch:
+  #     enabled: true
+  #   serviceAccount:
+  #     create: true
+  #     name: ingress-nginx-admission
