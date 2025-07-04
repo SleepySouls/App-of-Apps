@@ -1,6 +1,6 @@
 anything-llm:
   ingress:
-    enabled: true
+    enabled: false
     hosts:
       - host: anythingllm.example.com
         paths:
