@@ -1,0 +1,11 @@
+memgraph:
+  ingress:
+    enabled: true
+    hosts:
+      - host: memgraph.example.com  # Change this to your desired host
+        paths:
+          - path:
+            pathType: ImplementationSpecific
+
+  autoscaling:
+    enabled: true

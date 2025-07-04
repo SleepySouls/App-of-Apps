@@ -28,6 +28,9 @@ applications:
   n8n:
     createNamespace: true
     namespace: n8n
+  memgraph:
+    createNamespace: true
+    namespace: memgraph
   # kube-prometheus-stack:
   #   createNamespace: true
   #   namespace: monitoring
