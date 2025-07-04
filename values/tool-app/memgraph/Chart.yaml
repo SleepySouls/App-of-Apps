@@ -3,7 +3,8 @@ name: memgraph
 description: A Helm chart for deploying Memgraph, a real-time graph database.
 type: application
 version: 0.1.0
+
 dependencies:
   - name: memgraph
     version: 0.1.8
-    repository: https://memgraph.github.io/helm-charts/
+    repository: https://memgraph.github.io/helm-charts
