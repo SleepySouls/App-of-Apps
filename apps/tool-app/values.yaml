@@ -16,6 +16,9 @@ applications:
   harbor:
     createNamespace: true
     namespace: harbor
+  k8s-resources:
+    createNamespace: true
+    namespace: tool-app
   # kube-prometheus-stack:
   #   createNamespace: true
   #   namespace: monitoring
