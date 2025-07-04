@@ -8,7 +8,6 @@ n8n:
       - host: n8n.example.com
         paths:
           - path: /
-            pathType: ImplementationSpecific
 
   redis:
     enabled: true
