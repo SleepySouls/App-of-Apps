@@ -5,20 +5,13 @@ expose:
   ingress:
     enabled: true
     hosts:
-      core: harbor.khangvu.dev
+      core: harbor.example.com
     className: nginx
-    annotations:
-      nginx.ingress.kubernetes.io/proxy-body-size: "0"
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-      nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-      cert-manager.io/cluster-issuer: "letsencrypt-prod"
     tls:
-      enabled: true
+      enabled: false
       secretName: harbor-tls
 
-externalURL: https://harbor.khangvu.dev
+externalURL: http://harbor.example.com
 
 harborAdminPassword: Harbor12345 # Change this to a strong password!
 
