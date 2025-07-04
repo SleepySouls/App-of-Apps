@@ -13,15 +13,9 @@ applications:
   ingress-nginx:
     createNamespace: true
     namespace: ingress-nginx
-  metallb:
-    createNamespace: true
-    namespace: metallb-system
   harbor:
     createNamespace: true
     namespace: harbor
-  cert-manager:
-    createNamespace: true
-    namespace: cert-manager
   kube-prometheus-stack:
     createNamespace: true
     namespace: monitoring
