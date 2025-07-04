@@ -16,21 +16,21 @@ applications:
   harbor:
     createNamespace: true
     namespace: harbor
-  kube-prometheus-stack:
-    createNamespace: true
-    namespace: monitoring
-    dependsOn:
-      - cert-manager
-    syncPolicy:
-      syncOptions:
-        - CreateNamespace=true
-        - ServerSideApply=true
-      syncWave: 1
-  argo-rollouts:
-    createNamespace: true
-    dependsOn:
-      - kube-prometheus-stack
-    syncPolicy:
-      syncOptions:
-        - CreateNamespace=true
-      syncWave: 2
+  # kube-prometheus-stack:
+  #   createNamespace: true
+  #   namespace: monitoring
+  #   dependsOn:
+  #     - cert-manager
+  #   syncPolicy:
+  #     syncOptions:
+  #       - CreateNamespace=true
+  #       - ServerSideApply=true
+  #     syncWave: 1
+  # argo-rollouts:
+  #   createNamespace: true
+  #   dependsOn:
+  #     - kube-prometheus-stack
+  #   syncPolicy:
+  #     syncOptions:
+  #       - CreateNamespace=true
+  #     syncWave: 2
