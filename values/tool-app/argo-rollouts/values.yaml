@@ -13,15 +13,9 @@ argo-rollouts:
       ingressClassName: nginx
       annotations:
         kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/ssl-redirect: "true"
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-        cert-manager.io/cluster-issuer: "letsencrypt-prod"
       hosts:
-        - rollouts.khangvu.dev
+        - rollouts.example.com
       path: /
-      tls:
-        - secretName: argo-rollouts-tls
-          hosts:
-            - rollouts.khangvu.dev
+
   notifications:
     enabled: true
