@@ -19,6 +19,9 @@ applications:
   k8s-resources:
     createNamespace: true
     namespace: tool-app
+  anythingllm:
+    createNamespace: true
+    namespace: anythingllm
   # kube-prometheus-stack:
   #   createNamespace: true
   #   namespace: monitoring
