@@ -37,3 +37,6 @@ applications:
   argo-rollouts:
     createNamespace: true
     namespace: argo-rollouts
+  pgvector:
+    createNamespace: true
+    namespace: pgvector

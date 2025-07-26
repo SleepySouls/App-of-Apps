@@ -1,0 +1,24 @@
+postgresql:
+  postgresql:
+    fullnameOverride: pgvector-postgresql
+    auth:
+      username: pgvector
+      password: pgvector
+      database: pgvector
+
+  image:
+    registry: pgvector
+    repository: pgvector
+    tag: 0.8.0-pg15
+  service:
+    type: ClusterIP
+    port: 5432
+
+  architecture: "standalone"
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi  
+
+  containerSecurityContext:
+    enabled: false
