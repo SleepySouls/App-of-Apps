@@ -19,6 +19,5 @@ postgresql:
     persistence:
       enabled: true
       size: 8Gi  
-
-  containerSecurityContext:
-    enabled: false
+    containerSecurityContext:
+      enabled: false
