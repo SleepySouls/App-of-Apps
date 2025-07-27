@@ -43,3 +43,6 @@ applications:
   langfuse:
     createNamespace: true
     namespace: langfuse
+  metrics-server:
+    createNamespace: true
+    namespace: metrics-server

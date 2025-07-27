@@ -1,0 +1,9 @@
+metrics-server:
+  rbac:
+    create: false
+  addonResizer:
+    enabled: true
+  metrics: 
+    enabled: true
+  serviceMonitor:
+    enabled: true
