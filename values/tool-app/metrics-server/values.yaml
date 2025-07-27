@@ -3,6 +3,8 @@ metrics-server:
     create: true
   addonResizer:
     enabled: true
+  apiService:
+    insecureSkipTLSVerify: true
   metrics: 
     enabled: true
   serviceMonitor:
