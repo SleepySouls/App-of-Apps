@@ -30,8 +30,8 @@ langfuse:
 
     web:
       image:
-        repository: langfuse/langfuse-web
-        tag: sha-1ea6433
+        repository: langfuse/langfuse
+        tag: latest
         pullPolicy: IfNotPresent
       service:
         type: ClusterIP
