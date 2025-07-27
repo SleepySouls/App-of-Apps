@@ -46,5 +46,6 @@ opentelemetry-operator:
       enabled: false
 
 opentelemetry-target-allocator:
-  image:
-    pullPolicy: IfNotPresent
+  targetAllocator:
+    image:
+      pullPolicy: IfNotPresent
