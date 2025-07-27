@@ -23,15 +23,15 @@ opentelemetry-collector:
     logsCollections:
       enabled: true
       includeCollectorLogs: true
-  hostMetrics:
-    enabled: true
-  kubernetesAttributes:
-    enabled: true
-    extractAllPodLabels: true
-    extractAllPodAnnotations: true
-  kubeletMetrics:
-    enabled: true
-  kubernetesEvents:
-    enabled: true
-  clusterMetrics:
-    enabled: true
+    hostMetrics:
+      enabled: true
+    kubernetesAttributes:
+      enabled: true
+      extractAllPodLabels: true
+      extractAllPodAnnotations: true
+    kubeletMetrics:
+      enabled: true
+    kubernetesEvents:
+      enabled: true
+    clusterMetrics:
+      enabled: true
