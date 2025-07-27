@@ -1,4 +1,4 @@
-memgraph:
+memgraph-lab:
   ingress:
     enabled: true
     className: nginx  # Change this to your desired ingress class

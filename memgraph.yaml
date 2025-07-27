@@ -1,0 +1,159 @@
+---
+# Source: memgraph/charts/memgraph-lab/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: memgraph-memgraph-lab
+  labels:
+    helm.sh/chart: memgraph-lab-0.1.8
+    app.kubernetes.io/name: memgraph-lab
+    app.kubernetes.io/instance: memgraph
+    app.kubernetes.io/version: "3.3.0"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: memgraph/charts/memgraph-lab/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: memgraph-memgraph-lab
+  labels:
+    helm.sh/chart: memgraph-lab-0.1.8
+    app.kubernetes.io/name: memgraph-lab
+    app.kubernetes.io/instance: memgraph
+    app.kubernetes.io/version: "3.3.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: memgraph-lab
+    app.kubernetes.io/instance: memgraph
+---
+# Source: memgraph/charts/memgraph-lab/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memgraph-memgraph-lab
+  labels:
+    helm.sh/chart: memgraph-lab-0.1.8
+    app.kubernetes.io/name: memgraph-lab
+    app.kubernetes.io/instance: memgraph
+    app.kubernetes.io/version: "3.3.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: memgraph-lab
+      app.kubernetes.io/instance: memgraph
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: memgraph-lab
+        app.kubernetes.io/instance: memgraph
+    spec:
+      serviceAccountName: memgraph-memgraph-lab
+      securityContext:
+        {}
+      containers:
+        - name: memgraph-lab
+          securityContext:
+            {}
+          image: "memgraph/lab:3.3.0"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /check
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /check
+              port: http
+          resources:
+            {}
+          env:
+            - name: QUICK_CONNECT_MG_HOST
+              value: "memgraph-db"
+            - name: QUICK_CONNECT_MG_PORT
+              value: "7687"
+            - name: BASE_PATH
+              value: ""
+---
+# Source: memgraph/charts/memgraph-lab/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: memgraph-memgraph-lab
+  labels:
+    helm.sh/chart: memgraph-lab-0.1.8
+    app.kubernetes.io/name: memgraph-lab
+    app.kubernetes.io/instance: memgraph
+    app.kubernetes.io/version: "3.3.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: memgraph-memgraph-lab
+  minReplicas: 1
+  maxReplicas: 100
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
+---
+# Source: memgraph/charts/memgraph-lab/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: memgraph-memgraph-lab
+  labels:
+    helm.sh/chart: memgraph-lab-0.1.8
+    app.kubernetes.io/name: memgraph-lab
+    app.kubernetes.io/instance: memgraph
+    app.kubernetes.io/version: "3.3.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "memgraph.example.com"
+      http:
+        paths:
+          - path: 
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: memgraph-memgraph-lab
+                port:
+                  number: 3000
+---
+# Source: memgraph/charts/memgraph-lab/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "memgraph-memgraph-lab-test-connection"
+  labels:
+    helm.sh/chart: memgraph-lab-0.1.8
+    app.kubernetes.io/name: memgraph-lab
+    app.kubernetes.io/instance: memgraph
+    app.kubernetes.io/version: "3.3.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['memgraph-memgraph-lab:3000']
+  restartPolicy: Never
