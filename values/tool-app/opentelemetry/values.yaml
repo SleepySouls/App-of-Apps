@@ -44,3 +44,7 @@ opentelemetry-operator:
   admissionWebhooks:
     certManager:
       enabled: false
+
+opentelemetry-target-allocator:
+  image:
+    pullPolicy: IfNotPresent
