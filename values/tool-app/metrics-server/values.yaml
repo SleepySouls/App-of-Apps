@@ -7,3 +7,7 @@ metrics-server:
     enabled: true
   serviceMonitor:
     enabled: true
+  tls:
+    type: "helm"
+    lookup: true
+    certDurationDays: 365
