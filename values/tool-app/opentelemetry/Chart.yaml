@@ -12,3 +12,6 @@ dependencies:
   - name: opentelemetry-operator
     version: 0.92.0
     repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+  - name: opentelemetry-target-allocator
+    version: 0.126.1
+    repository: https://open-telemetry.github.io/opentelemetry-helm-charts
