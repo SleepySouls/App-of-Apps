@@ -1,7 +1,7 @@
 opentelemetry-collector:
   image:
     repository: otel/opentelemetry-collector
-    tag: 0.129.0
+    tag: ""
     pullPolicy: IfNotPresent
   command:
     name: otelcol
