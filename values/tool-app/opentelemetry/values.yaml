@@ -48,4 +48,4 @@ opentelemetry-operator:
 opentelemetry-target-allocator:
   targetAllocator:
     image:
-      pullPolicy: IfNotPresent
+      tag: ""
