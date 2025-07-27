@@ -6,3 +6,12 @@ opentelemetry-collector:
   command:
     name: otelcol
   mode: statefulset
+  ingress:
+    enabled: true
+    className: "nginx"
+    hosts:
+      - host: otel-collector.example.com
+        paths:
+          - path: /
+            pathType: Prefix
+            port: 4318
