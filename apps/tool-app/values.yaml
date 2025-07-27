@@ -46,3 +46,6 @@ applications:
   metrics-server:
     createNamespace: true
     namespace: metrics-server
+  opentelemetry:
+    createNamespace: true
+    namespace: opentelemetry
