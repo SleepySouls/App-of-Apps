@@ -39,8 +39,8 @@
 opentelemetry-operator:
   manager:
     createRbacPermissions: true
-  serviceMonitor:
-    enabled: true
+    serviceMonitor:
+      enabled: true
   admissionWebhooks:
     certManager:
       enabled: false
