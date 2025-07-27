@@ -1,0 +1,78 @@
+langfuse:
+  langfuse:
+    logging:
+      level: info
+      format: text
+
+    salt:
+      value: "default-salt-value"
+
+    encryptionKey:
+      value: "default-encryption-key-value"
+
+    feature:
+      telemetryEnabled: false
+      signUpDisabled: false
+      experimentalFeaturesEnabled: true
+
+    nodeEnv: production
+
+    ingress:
+      enabled: true
+      className: "nginx"
+      hosts:
+        - host: langfuse.example.com
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        enabled: false
+
+    web:
+      image:
+        repository: langfuse/langfuse-web
+        tag: latest
+        pullPolicy: IfNotPresent
+      service:
+        type: ClusterIP
+        port: 3000
+
+    worker:
+      image:
+        repository: langfuse/langfuse-worker
+        tag: latest
+        pullPolicy: IfNotPresent
+
+    nextauth:
+      url: http://langfuse.example.com
+      secret:
+        value: "default-nextauth-secret-value"
+
+  postgresql:
+    deploy: true
+    auth:
+      username: postgres
+      password: postgres-password
+      database: postgres_langfuse
+    migration:
+      autoMigrate: true
+    architecture: standalone
+  
+  redis:
+    deploy: true
+    architecture: standalone
+    auth:
+      username: default
+      password: redis-password
+
+  clickhouse:
+    deploy: true
+    architecture: standalone
+    auth:
+      username: clickhouse
+      password: clickhouse-password
+    shards: 1
+    replicaCount: 1
+
+  s3:
+    deploy: true

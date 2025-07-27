@@ -40,3 +40,6 @@ applications:
   pgvector:
     createNamespace: true
     namespace: pgvector
+  langfuse:
+    createNamespace: true
+    namespace: langfuse
