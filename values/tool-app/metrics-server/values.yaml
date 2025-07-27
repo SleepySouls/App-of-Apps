@@ -1,6 +1,6 @@
 metrics-server:
   rbac:
-    create: false
+    create: true
   addonResizer:
     enabled: true
   metrics: 
