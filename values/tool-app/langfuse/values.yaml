@@ -10,7 +10,15 @@ langfuse:
     encryptionKey:
       value: "cca0aaedc494f2de9f97e1647075b0e63efad1c30973a8e85f5de9c98e29ba7b"
 
-    feature:
+    auth:
+      disableUsernamePassword: true
+      providers:
+        google:
+          clientId: "default-google-client-id"
+          clientSecret: "default-google-client-secret"
+
+
+    features:
       telemetryEnabled: false
       signUpDisabled: false
       experimentalFeaturesEnabled: true
