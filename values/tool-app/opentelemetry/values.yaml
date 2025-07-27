@@ -8,7 +8,7 @@ opentelemetry-collector:
   mode: statefulset
   ingress:
     enabled: true
-    className: "nginx"
+    ingressClassName: "nginx"
     hosts:
       - host: otel-collector.example.com
         paths:
@@ -20,7 +20,7 @@ opentelemetry-collector:
   serviceMonitor:
     enabled: true
   presets:
-    logsCollections:
+    logsCollection:
       enabled: true
       includeCollectorLogs: true
     hostMetrics:
