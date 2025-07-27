@@ -8,7 +8,7 @@ langfuse:
       value: "default-salt-value"
 
     encryptionKey:
-      value: "default-encryption-key-value"
+      value: "cca0aaedc494f2de9f97e1647075b0e63efad1c30973a8e85f5de9c98e29ba7b"
 
     feature:
       telemetryEnabled: false
@@ -31,7 +31,7 @@ langfuse:
     web:
       image:
         repository: langfuse/langfuse-web
-        tag: latest
+        tag: ""
         pullPolicy: IfNotPresent
       service:
         type: ClusterIP
@@ -40,7 +40,7 @@ langfuse:
     worker:
       image:
         repository: langfuse/langfuse-worker
-        tag: latest
+        tag: ""
         pullPolicy: IfNotPresent
 
     nextauth:
