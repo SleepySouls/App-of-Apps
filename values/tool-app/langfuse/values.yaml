@@ -73,6 +73,7 @@ langfuse:
       password: clickhouse-password
     shards: 1
     replicaCount: 1
+    resourcesPreset: small
 
   s3:
     deploy: true
