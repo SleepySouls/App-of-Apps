@@ -1,37 +1,46 @@
-opentelemetry-collector:
-  image:
-    repository: otel/opentelemetry-collector
-    tag: ""
-    pullPolicy: IfNotPresent
-  command:
-    name: otelcol
-  mode: statefulset
-  ingress:
-    enabled: true
-    ingressClassName: "nginx"
-    hosts:
-      - host: otel-collector.example.com
-        paths:
-          - path: /
-            pathType: Prefix
-            port: 4318
-  podMonitor:
-    enabled: true
+# opentelemetry-collector:
+#   image:
+#     repository: otel/opentelemetry-collector
+#     tag: ""
+#     pullPolicy: IfNotPresent
+#   command:
+#     name: otelcol
+#   mode: statefulset
+#   ingress:
+#     enabled: true
+#     ingressClassName: "nginx"
+#     hosts:
+#       - host: otel-collector.example.com
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             port: 4318
+#   podMonitor:
+#     enabled: true
+#   serviceMonitor:
+#     enabled: true
+#   presets:
+#     logsCollection:
+#       enabled: true
+#       includeCollectorLogs: true
+#     hostMetrics:
+#       enabled: true
+#     kubernetesAttributes:
+#       enabled: true
+#       extractAllPodLabels: true
+#       extractAllPodAnnotations: true
+#     kubeletMetrics:
+#       enabled: true
+#     kubernetesEvents:
+#       enabled: true
+#     clusterMetrics:
+#       enabled: true
+
+opentelemetry-operator:
+  manager:
+    createRbacPermissions: true
   serviceMonitor:
     enabled: true
-  presets:
-    logsCollection:
-      enabled: true
-      includeCollectorLogs: true
-    hostMetrics:
-      enabled: true
-    kubernetesAttributes:
-      enabled: true
-      extractAllPodLabels: true
-      extractAllPodAnnotations: true
-    kubeletMetrics:
-      enabled: true
-    kubernetesEvents:
-      enabled: true
-    clusterMetrics:
-      enabled: true
+  admissionWebhooks:
+    certManager:
+      enabled: false
