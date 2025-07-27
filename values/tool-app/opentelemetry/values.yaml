@@ -15,3 +15,23 @@ opentelemetry-collector:
           - path: /
             pathType: Prefix
             port: 4318
+  podMonitor:
+    enabled: true
+  serviceMonitor:
+    enabled: true
+  presets:
+    logsCollections:
+      enabled: true
+      includeCollectorLogs: true
+  hostMetrics:
+    enabled: true
+  kubernetesAttributes:
+    enabled: true
+    extractAllPodLabels: true
+    extractAllPodAnnotations: true
+  kubeletMetrics:
+    enabled: true
+  kubernetesEvents:
+    enabled: true
+  clusterMetrics:
+    enabled: true
