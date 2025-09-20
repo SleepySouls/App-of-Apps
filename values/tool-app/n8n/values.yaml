@@ -14,7 +14,7 @@ n8n:
     enabled: true
 
   webhook:
-    enabled: true
+    enabled: false
 
   valkey:
     enabled: true
