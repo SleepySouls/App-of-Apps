@@ -55,6 +55,7 @@ applications:
     valuesFiles:
       - values-operator.yaml
       - values-secrets-webhook.yaml
+      - values-secrets-reloader.yaml
   cert-manager:
     createNamespace: true
     namespace: cert-manager
