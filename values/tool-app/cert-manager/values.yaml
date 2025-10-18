@@ -3,3 +3,8 @@ cert-manager:
     enabled: true
     keep: true
   namespace: cert-manager
+  extraArgs:
+    - --enable-certificate-owner-ref=true
+  installCRDs: true
+  startupapicheck:
+    timeout: 1m
