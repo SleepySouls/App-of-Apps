@@ -8,3 +8,6 @@ dependencies:
   - name: vault-operator
     version: 1.23.0
     repository: oci://ghcr.io/bank-vaults/helm-charts
+  - name: vault-secrets-webhook
+    version: 1.22.1
+    repository: oci://ghcr.io/bank-vaults/helm-charts

@@ -52,3 +52,6 @@ applications:
   vault-operator:
     createNamespace: true
     namespace: vault
+    valuesFiles:
+      - values-operator.yaml
+      - values-secrets-webhook.yaml

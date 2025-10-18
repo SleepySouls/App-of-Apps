@@ -4,14 +4,21 @@ kind: Application
 metadata:
   name: {{ $name }}
   namespace: {{ $.Values.spec.namespace }}
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: {{ $.Values.spec.project }}
   source:
     repoURL: {{ $.Values.spec.repoURL }}
     targetRevision: {{ $.Values.spec.target }}
     path: {{ $.Values.spec.path }}/{{ $name }}
+    helm:
+      valuesFiles:
+        {{- if $app.valuesFiles }}
+        {{- range $app.valuesFiles }}
+        - {{ . }}
+        {{- end }}
+        {{- else }}
+        - values.yaml
+        {{- end }}
   destination:
     server: {{ $.Values.spec.cluster }}
     namespace: {{ default $name $app.namespace }}
