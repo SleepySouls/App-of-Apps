@@ -11,7 +11,7 @@ spec:
     targetRevision: {{ $.Values.spec.target }}
     path: {{ $.Values.spec.path }}/{{ $name }}
     helm:
-      valuesFiles:
+      valueFiles:
         {{- if $app.valuesFiles }}
         {{- range $app.valuesFiles }}
         - {{ . }}
