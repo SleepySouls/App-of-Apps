@@ -1,0 +1,10 @@
+apiVersion: v2
+name: vaut-operator
+description: A Helm chart for deploying vault-operator on Kubernetes
+type: application
+version: 0.1.0
+
+dependencies:
+  - name: vault-operator
+    version: 1.23.0
+    repository: https://ghcr.io/bank-vaults/helm-charts/vault-operator

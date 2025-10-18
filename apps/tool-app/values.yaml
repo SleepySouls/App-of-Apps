@@ -49,3 +49,6 @@ applications:
   opentelemetry:
     createNamespace: true
     namespace: opentelemetry
+  vault-operator:
+    createNamespace: true
+    namespace: vault
