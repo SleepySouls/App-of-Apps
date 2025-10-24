@@ -136,6 +136,7 @@ spec:
     storage:
       raft:
         path: "/vault/file"
+    disabled_mlock: true
     listener:
       tcp:
         address: "0.0.0.0:8200"
