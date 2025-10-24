@@ -4,13 +4,13 @@ vault-operator:
 
   image:
     repository: ghcr.io/bank-vaults/vault-operator
-    tag: v1.23.0
+    tag: sha256-c9424c995c9b6803f05528caaa2ca25c6c7e0032745344e09039c2bfd38c2c42.sig
     pullPolicy: IfNotPresent
 
   bankVaults:
     image:
       repository: ghcr.io/bank-vaults/bank-vaults
-      tag: v1.23.0
+      tag: sha256-dbbe97bbc257be0054ad6145ab046381911bf971554d7748b154febb9edfec49.sig
 
   watchNamespaces: vault
   syncPeriod: 1m
