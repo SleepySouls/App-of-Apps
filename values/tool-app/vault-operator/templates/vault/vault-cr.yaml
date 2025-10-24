@@ -136,14 +136,14 @@ spec:
     storage:
       raft:
         path: "/vault/file"
-    disabled_mlock: true
     listener:
       tcp:
         address: "0.0.0.0:8200"
         tls_cert_file: /vault/tls/server.crt
         tls_key_file: /vault/tls/server.key
-    api_addr: https://vault.vault:8200
-    cluster_addr: "https://${.Env.POD_NAME}:8201"
+    api_addr: http://vault.vault:8200
+    cluster_addr: "http://${.Env.POD_NAME}:8201"
+    disable_mlock: true
     ui: true
 
   statsdDisabled: true
